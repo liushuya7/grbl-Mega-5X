@@ -28,6 +28,7 @@
 
 
 #ifdef CPU_MAP_2560_INITIAL // (Arduino Mega 2560) Working @EliteEng
+  #include "nuts_bolts.h"
 
   // Serial port interrupt vectors
   #define SERIAL_RX USART0_RX_vect
