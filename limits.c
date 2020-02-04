@@ -32,7 +32,7 @@
 
 void limits_init()
 {
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     // Set as input pins
     MIN_LIMIT_DDR(0) &= ~(1<<MIN_LIMIT_BIT(0));
     MIN_LIMIT_DDR(1) &= ~(1<<MIN_LIMIT_BIT(1));
@@ -151,7 +151,7 @@ void limits_init()
 // Disables hard limits.
 void limits_disable()
 {
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     #ifndef DISABLE_HW_LIMITS_INTERRUPT
       LIMIT_PCMSK &= ~LIMIT_MASK;  // Disable specific pins of the Pin Change Interrupt
       PCICR &= ~(1 << LIMIT_INT);  // Disable Pin Change Interrupt
@@ -161,7 +161,7 @@ void limits_disable()
     PCICR &= ~(1 << LIMIT_INT);  // Disable Pin Change Interrupt
   #endif // DEFAULTS_RAMPS_BOARD
 }
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   #if N_AXIS == 4
     static volatile uint8_t * const max_limit_pins[N_AXIS] = {&MAX_LIMIT_PIN(0), &MAX_LIMIT_PIN(1), &MAX_LIMIT_PIN(2), &MAX_LIMIT_PIN(3)};
     static volatile uint8_t * const min_limit_pins[N_AXIS] = {&MIN_LIMIT_PIN(0), &MIN_LIMIT_PIN(1), &MIN_LIMIT_PIN(2), &MIN_LIMIT_PIN(3)};
@@ -191,7 +191,7 @@ void limits_disable()
 uint8_t limits_get_state()
 {
   uint8_t limit_state = 0;
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     uint8_t pin;
     uint8_t idx;
     #ifdef INVERT_LIMIT_PIN_MASK
@@ -235,7 +235,7 @@ uint8_t limits_get_state()
   #endif //DEFAULTS_RAMPS_BOARD
 }
 
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   #ifndef DISABLE_HW_LIMITS_INTERRUPT
     #error "HW limits interrupts are not implemented"
   #endif
@@ -319,7 +319,7 @@ uint8_t limits_get_state()
   #endif
 #endif // DEFAULTS_RAMPS_BOARD
 
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   static uint8_t axislock_active(uint8_t *axislock)
   {
     uint8_t res = 0;
@@ -376,7 +376,7 @@ void limits_go_home(uint8_t cycle_mask)
   // Set search mode with approach at seek rate to quickly engage the specified cycle_mask limit switches.
   bool approach = true;
   float homing_rate = settings.homing_seek_rate;
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     uint8_t limit_state, n_active_axis;
     uint8_t axislock[N_AXIS];
     do {

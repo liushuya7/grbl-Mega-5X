@@ -39,7 +39,7 @@ void limits_go_home(uint8_t cycle_mask);
 void limits_soft_check(float *target);
 
 // Hard limit error for RAMPS non interrupt hardware limits
-#ifdef ENABLE_RAMPS_HW_LIMITS
+#if defined ENABLE_RAMPS_HW_LIMITS || defined ENABLE_GRBLDUINO_HW_LIMITS
   void ramps_hard_limit();
 #endif
 #endif

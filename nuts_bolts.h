@@ -1,7 +1,8 @@
 /*
   nuts_bolts.h - Header file for shared definitions, variables, and functions
   Part of Grbl
-
+  
+  Copyright <c> 2020 BIGSS
   Copyright (c) 2017-2018 Gauthier Briere
   Copyright (c) 2011-2016 Sungeun K. Jeon for Gnea Research LLC
   Copyright (c) 2009-2011 Simen Svale Skogsrud

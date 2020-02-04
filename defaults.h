@@ -453,7 +453,7 @@
   #define DEFAULT_HOMING_PULLOFF 1.0 // mm
 #endif
 
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   #define MICROSTEPS_AXIS1 4     // Microstepping = 1/4 pas
   #define STEP_REVS_AXIS1 200    // Moteurs à 200 pas par tour
   #define UNIT_PER_REV_AXIS1 2.0 // 2mm

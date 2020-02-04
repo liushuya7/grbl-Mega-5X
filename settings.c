@@ -334,7 +334,7 @@ void settings_init() {
 // Returns step pin mask according to Grbl internal axis indexing.
 uint8_t get_step_pin_mask(uint8_t axis_idx)
 {
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     if ( axis_idx == AXIS_1 ) { return((1<<STEP_BIT(AXIS_1))); }
     if ( axis_idx == AXIS_2 ) { return((1<<STEP_BIT(AXIS_2))); }
     #if N_AXIS > 3
@@ -358,7 +358,7 @@ uint8_t get_step_pin_mask(uint8_t axis_idx)
 // Returns direction pin mask according to Grbl internal axis indexing.
 uint8_t get_direction_pin_mask(uint8_t axis_idx)
 {
-  #ifdef DEFAULTS_RAMPS_BOARD
+  #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
     if ( axis_idx == AXIS_1 ) { return((1<<DIRECTION_BIT(AXIS_1))); }
     if ( axis_idx == AXIS_2 ) { return((1<<DIRECTION_BIT(AXIS_2))); }
     #if N_AXIS > 3
@@ -381,7 +381,7 @@ uint8_t get_direction_pin_mask(uint8_t axis_idx)
 
 // Returns limit pin mask according to Grbl internal axis indexing.
 
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   uint8_t get_min_limit_pin_mask(uint8_t axis_idx)
   {
     if ( axis_idx == AXIS_1 ) { return((1<<MIN_LIMIT_BIT(AXIS_1))); }
