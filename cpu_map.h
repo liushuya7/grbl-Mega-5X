@@ -260,25 +260,23 @@
   #define PROBE_MASK      (1<<PROBE_BIT)
 
   // Advanced Configuration Below You should not need to touch these variables
-  // Set Timer up to use TIMER4B which is attached to Digital Pin 8 - Ramps 1.4 12v output with heat sink
-  #define SPINDLE_PWM_MAX_VALUE     1024.0 // Translates to about 1.9 kHz PWM frequency at 1/8 prescaler
+  #define SPINDLE_PWM_MAX_VALUE     100.0  // Translates to about 20 kHz PWM frequency with 1/8 prescaler (1<<CS41)
   #ifndef SPINDLE_PWM_MIN_VALUE
     #define SPINDLE_PWM_MIN_VALUE   1   // Must be greater than zero.
   #endif
   #define SPINDLE_PWM_OFF_VALUE     0
   #define SPINDLE_PWM_RANGE         (SPINDLE_PWM_MAX_VALUE-SPINDLE_PWM_MIN_VALUE)
 
-  //Control Digital Pin 6 which is Servo 2 signal pin on Ramps 1.4 board
   #define SPINDLE_TCCRA_REGISTER    TCCR4A
   #define SPINDLE_TCCRB_REGISTER    TCCR4B
-  #define SPINDLE_OCR_REGISTER      OCR4C
-  #define SPINDLE_COMB_BIT          COM4C1
+  #define SPINDLE_OCR_REGISTER      OCR4B
+  #define SPINDLE_COMB_BIT          COM4B1
 
   // no prescaler, 16-bit Fast PWM mode
   #define SPINDLE_TCCRA_INIT_MASK ((1<<WGM40) | (1<<WGM41))
-  #define SPINDLE_TCCRB_INIT_MASK ((1<<WGM42) | (1<<WGM43) | (1<<CS40))
+  #define SPINDLE_TCCRB_INIT_MASK ((1<<WGM42) | (1<<WGM43) | (1<<CS41))
   #define SPINDLE_OCRA_REGISTER   OCR4A // 16-bit Fast PWM mode requires top reset value stored here.
-  #define SPINDLE_OCRA_TOP_VALUE  0x0400 // PWM counter reset value. Should be the same as PWM_MAX_VALUE in hex.
+  #define SPINDLE_OCRA_TOP_VALUE  0x0064 // PWM counter reset value. Should be the same as PWM_MAX_VALUE in hex.
 
   // Define spindle output pins.
   #define SPINDLE_PWM_DDR   DDRH
