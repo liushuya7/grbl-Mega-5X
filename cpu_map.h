@@ -52,7 +52,7 @@
     #define STEP_PORT_4 A // Axis number 5
   #endif
   #if N_AXIS > 5
-    #define STEP_PORT_5 L // Axis number 6
+    #define STEP_PORT_5 A // Axis number 6
   #endif
   #define STEP_BIT_0 2  // X Step - Pin D24
   #define STEP_BIT_1 3  // Y Step - Pin D25

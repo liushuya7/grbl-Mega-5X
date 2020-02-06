@@ -175,12 +175,11 @@
 #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
   #if N_AXIS == 4 // 4 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
-    #define HOMING_CYCLE_1 (1<<AXIS_4) // Home 4th axis (A)
     #define HOMING_CYCLE_2 ((1<<AXIS_1)|(1<<AXIS_2)) // Home X, Y axis
   #elif N_AXIS == 5 // 5 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
     #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))// Home X, Y axis
-    #define HOMING_CYCLE_2 (1<<AXIS_4) // Home 4th axis (A)
+    // #define HOMING_CYCLE_2 (1<<AXIS_4) // Home 4th axis (A)
     //#define HOMING_CYCLE_4 (1<<AXIS_5) // Home 5th axis (B)
   #elif N_AXIS == 6 // 6 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
@@ -198,7 +197,7 @@
   #define HOMING_CYCLE_0 (1<<AXIS_3)                // REQUIRED: First move Z to clear workspace.
   #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))  // OPTIONAL: Then move X,Y at the same time.
   // #define HOMING_CYCLE_2                         // OPTIONAL: Uncomment and add axes mask to enable
-#endif // DEFAULTS_RAMPS_BOARD
+#endif // DEFAULTS_RAMPS_BOARD or DEFAULTS_GRBLDUINO_BOARD
 
 // NOTE: The following are two examples to setup homing for 2-axis machines.
 // #define HOMING_CYCLE_0 ((1<<AXIS_1)|(1<<AXIS_2))  // NOT COMPATIBLE WITH COREXY: Homes both X-Y in one cycle.
@@ -220,7 +219,7 @@
 // After homing, Grbl will set by default the entire machine space into negative space, as is typical
 // for professional CNC machines, regardless of where the limit switches are located. Uncomment this
 // define to force Grbl to always set the machine origin at the homed location despite switch orientation.
-// #define HOMING_FORCE_SET_ORIGIN // Uncomment to enable.
+#define HOMING_FORCE_SET_ORIGIN // Uncomment to enable.
 
 // Number of blocks Grbl executes upon startup. These blocks are stored in EEPROM, where the size
 // and addresses are defined in settings.h. With the current settings, up to 2 startup blocks may
@@ -287,7 +286,7 @@
 // normally-open(NO) and normally-closed(NC) switches installed on their machine.
 // NOTE: PLEASE DO NOT USE THIS, unless you have a situation that needs it.
 // #define INVERT_LIMIT_PIN_MASK ((1<<X_LIMIT_BIT)|(1<<Y_LIMIT_BIT)) // Default disabled. Uncomment to enable.
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined DEFAULTS_RAMPS_BOARD | defined DEFAULTS_GRBLDUINO_BOARD
   // Only enable the following line if you have - (min) limit switches attached
   //#define INVERT_MIN_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3))
   // Only enable the following line if you have + (max) limit switches attached

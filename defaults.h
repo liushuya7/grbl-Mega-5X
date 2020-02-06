@@ -454,53 +454,53 @@
 #endif
 
 #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
-  #define MICROSTEPS_AXIS1 16     // Microstepping = 1/16
+  #define MICROSTEPS_AXIS1 32     // Microstepping 1, 8, 16, 32, 64, 128, 256
   #define STEP_REVS_AXIS1 200    // Motors at 200 steps per revolution
-  #define UNIT_PER_REV_AXIS1 (17.4 * 3.14159265359) // mm
+  #define UNIT_PER_REV_AXIS1 (17 * 3.14159265359) // mm
   #define DEFAULT_AXIS1_STEPS_PER_UNIT (MICROSTEPS_AXIS1*STEP_REVS_AXIS1/UNIT_PER_REV_AXIS1)
-  #define MICROSTEPS_AXIS2 16     // Microstepping = 1/16
+  #define MICROSTEPS_AXIS2 32     // Microstepping
   #define STEP_REVS_AXIS2 200    // Motors at 200 steps per revolution
-  #define UNIT_PER_REV_AXIS2 (17.4 * 3.14159265359) // mm
+  #define UNIT_PER_REV_AXIS2 (12.2 * 3.14159265359) // mm
   #define DEFAULT_AXIS2_STEPS_PER_UNIT (MICROSTEPS_AXIS2*STEP_REVS_AXIS2/UNIT_PER_REV_AXIS2)
-  #define MICROSTEPS_AXIS3 16     // Microstepping = 1/16
+  #define MICROSTEPS_AXIS3 5     // Microstepping = 1/4
   #define STEP_REVS_AXIS3 200    // Motors at 200 steps per revolution
-  #define UNIT_PER_REV_AXIS3 2.0 // 2mm
+  #define UNIT_PER_REV_AXIS3 4.0 // 2mm
   #define DEFAULT_AXIS3_STEPS_PER_UNIT (MICROSTEPS_AXIS3*STEP_REVS_AXIS3/UNIT_PER_REV_AXIS3)
-  #define STEP_MAX_FREQUENCY 5000
+  #define STEP_MAX_FREQUENCY 20000
   #define SECONDS_PER_MINUTE 60
   //#define DEFAULT_AXIS1_MAX_RATE 9000.0 // 9000 mm/min = 9000/60 = 150 mm/sec
-  #define DEFAULT_AXIS1_MAX_RATE (STEP_MAX_FREQUENCY/DEFAULT_AXIS1_STEPS_PER_UNIT*SECONDS_PER_MINUTE) // 3000
-  //#define DEFAULT_AXIS2_MAX_RATE 9000.0 // 9000 mm/min = 9000/60 = 150 mm/sec
+  #define DEFAULT_AXIS1_MAX_RATE (STEP_MAX_FREQUENCY/DEFAULT_AXIS1_STEPS_PER_UNIT*SECONDS_PER_MINUTE)
+  //#define DEFAULT_AXIS2_MAX_RATE 
   #define DEFAULT_AXIS2_MAX_RATE (STEP_MAX_FREQUENCY/DEFAULT_AXIS2_STEPS_PER_UNIT*SECONDS_PER_MINUTE)
-  //#define DEFAULT_AXIS3_MAX_RATE 300.0  //  300 mm/min =  300/60 =   5 mm/sec
+  //#define DEFAULT_AXIS3_MAX_RATE 
   #define DEFAULT_AXIS3_MAX_RATE (STEP_MAX_FREQUENCY/DEFAULT_AXIS3_STEPS_PER_UNIT*SECONDS_PER_MINUTE)
-  #define DEFAULT_AXIS1_ACCELERATION (100.0*60*60) // 300*60*60 mm/min^2 = 300 mm/sec^2
-  #define DEFAULT_AXIS2_ACCELERATION (100.0*60*60) // 300*60*60 mm/min^2 = 300 mm/sec^2
+  #define DEFAULT_AXIS1_ACCELERATION (150.0*60*60) // 300*60*60 mm/min^2 = 300 mm/sec^2
+  #define DEFAULT_AXIS2_ACCELERATION (150.0*60*60) // 300*60*60 mm/min^2 = 300 mm/sec^2
   #define DEFAULT_AXIS3_ACCELERATION (100.0*60*60) // 100*60*60 mm/min^2 = 100 mm/sec^2
-  #define DEFAULT_AXIS1_MAX_TRAVEL 300.0 // mm
-  #define DEFAULT_AXIS2_MAX_TRAVEL 300.0 // mm
-  #define DEFAULT_AXIS3_MAX_TRAVEL 100.0 // mm
+  #define DEFAULT_AXIS1_MAX_TRAVEL 280.0 // mm
+  #define DEFAULT_AXIS2_MAX_TRAVEL 280.0 // mm
+  #define DEFAULT_AXIS3_MAX_TRAVEL 65.0 // mm
   #if N_AXIS > 3
-    #define DEFAULT_AXIS4_STEPS_PER_UNIT 8.888889 // Direct drive : (200 pas par tours * 1/16 microsteps)/360°
+    #define DEFAULT_AXIS4_STEPS_PER_UNIT 71.1111 // Transmission drive: (200 steps per revolution * 1/16 microsteps) / 360 * induction ratio
     #define DEFAULT_AXIS4_MAX_RATE 1440 // °/mn
-    #define DEFAULT_AXIS4_ACCELERATION (50.0*60*60) // 100*60*60 mm/min^2 = 100 mm/sec^2
-    #define DEFAULT_AXIS4_MAX_TRAVEL 360.0 // °
+    #define DEFAULT_AXIS4_ACCELERATION (50.0*60*60) // 100*60*60 °/min^2 = 100 °/sec^2
+    #define DEFAULT_AXIS4_MAX_TRAVEL 180.0 // °
   #endif
   #if N_AXIS > 4
-    #define DEFAULT_AXIS5_STEPS_PER_UNIT 8.888889 // Direct drive : (200 pas par tours * 1/16 microsteps)/360°
+    #define DEFAULT_AXIS5_STEPS_PER_UNIT 8.888889
     #define DEFAULT_AXIS5_MAX_RATE 1440 // °/mn
-    #define DEFAULT_AXIS5_ACCELERATION (50.0*60*60) // 100*60*60 mm/min^2 = 100 mm/sec^2
-    #define DEFAULT_AXIS5_MAX_TRAVEL 180.0 // °
+    #define DEFAULT_AXIS5_ACCELERATION (50.0*60*60)
+    #define DEFAULT_AXIS5_MAX_TRAVEL 360.0 // °
   #endif
   #if N_AXIS > 5
-    #define DEFAULT_AXIS6_STEPS_PER_UNIT 8.888889 // Direct drive : (200 pas par tours * 1/16 microsteps)/360°
+    #define DEFAULT_AXIS6_STEPS_PER_UNIT 8.888889 // Direct drive: (200 steps per revolution * 1/16 microsteps) / 360 = 8.888888889
     #define DEFAULT_AXIS6_MAX_RATE 1440 // °/mn
     #define DEFAULT_AXIS6_ACCELERATION (50.0*60*60) // 100*60*60 mm/min^2 = 100 mm/sec^2
     #define DEFAULT_AXIS6_MAX_TRAVEL 180.0 // °
   #endif
   #define DEFAULT_SPINDLE_RPM_MAX 100 // laser power percentage
   #define DEFAULT_SPINDLE_RPM_MIN 0 // rpm
-  #define DEFAULT_STEP_PULSE_MICROSECONDS 5 //CL57T = 2.5us
+  #define DEFAULT_STEP_PULSE_MICROSECONDS 5 //CL57T min requirement 2.5us, cn5x setting requires > 3us
   #define DEFAULT_STEPPING_INVERT_MASK 0
   #define DEFAULT_DIRECTION_INVERT_MASK 0
   #define DEFAULT_STEPPER_IDLE_LOCK_TIME 50 // msec (0-254, 255 keeps steppers enabled)
@@ -516,10 +516,10 @@
   #define DEFAULT_LASER_MODE 1 // true
   #define DEFAULT_HOMING_ENABLE 1  // true
   #define DEFAULT_HOMING_DIR_MASK 0 // move positive dir
-  #define DEFAULT_HOMING_FEED_RATE 100.0 // mm/min
-  #define DEFAULT_HOMING_SEEK_RATE 500.0 // mm/min
+  #define DEFAULT_HOMING_FEED_RATE 1000.0 // mm/min
+  #define DEFAULT_HOMING_SEEK_RATE 1000.0 // mm/min
   #define DEFAULT_HOMING_DEBOUNCE_DELAY 250 // msec (0-65k)
-  #define DEFAULT_HOMING_PULLOFF 5.0 // mm
+  #define DEFAULT_HOMING_PULLOFF 3.0 // mm
 #endif
 
 #endif
