@@ -620,7 +620,7 @@ void limits_go_home(uint8_t cycle_mask)
         homing_rate = settings.homing_seek_rate;
       }
     } while (n_cycle-- > 0);
-  #endif // DEFAULTS_RAMPS_BOARD
+  #endif // DEFAULTS_RAMPS_BOARD, DEFAULTS_GRBLDUINO_BOARD
 
   // The active cycle axes should now be homed and machine limits have been located. By
   // default, Grbl defines machine space as all negative, as do most CNCs. Since limit switches

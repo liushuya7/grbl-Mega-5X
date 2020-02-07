@@ -56,7 +56,7 @@ typedef struct {
     uint8_t direction_bits[N_AXIS];    // The direction bit set for this block (refers to *_DIRECTION_BIT in config.h)
   #else
     uint8_t direction_bits;    // The direction bit set for this block (refers to *_DIRECTION_BIT in config.h)
-  #endif // DEFAULTS_RAMPS_BOARD
+  #endif // DEFAULTS_RAMPS_BOARD, DEFAULTS_GRBLDUINO_BOARD
   // Block condition data to ensure correct execution depending on states and overrides.
   uint8_t condition;      // Block bitflag variable defining block run conditions. Copied from pl_line_data.
   int32_t line_number;  // Block line number for real-time reporting. Copied from pl_line_data.
