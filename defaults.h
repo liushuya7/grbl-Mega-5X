@@ -454,11 +454,11 @@
 #endif
 
 #if defined DEFAULTS_RAMPS_BOARD || defined DEFAULTS_GRBLDUINO_BOARD
-  #define MICROSTEPS_AXIS1 32     // Microstepping 1, 8, 16, 32, 64, 128, 256
+  #define MICROSTEPS_AXIS1 8     // Microstepping 1, 8, 16, 32, 64, 128, 256
   #define STEP_REVS_AXIS1 200    // Motors at 200 steps per revolution
   #define UNIT_PER_REV_AXIS1 (17 * 3.14159265359) // mm
   #define DEFAULT_AXIS1_STEPS_PER_UNIT (MICROSTEPS_AXIS1*STEP_REVS_AXIS1/UNIT_PER_REV_AXIS1)
-  #define MICROSTEPS_AXIS2 32     // Microstepping
+  #define MICROSTEPS_AXIS2 8     // Microstepping
   #define STEP_REVS_AXIS2 200    // Motors at 200 steps per revolution
   #define UNIT_PER_REV_AXIS2 (12.2 * 3.14159265359) // mm
   #define DEFAULT_AXIS2_STEPS_PER_UNIT (MICROSTEPS_AXIS2*STEP_REVS_AXIS2/UNIT_PER_REV_AXIS2)
@@ -481,15 +481,15 @@
   #define DEFAULT_AXIS2_MAX_TRAVEL 280.0 // mm
   #define DEFAULT_AXIS3_MAX_TRAVEL 65.0 // mm
   #if N_AXIS > 3
-    #define DEFAULT_AXIS4_STEPS_PER_UNIT 58 // Transmission drive: (200 steps per revolution * 1/16 microsteps) / 360 * induction ratio
+    #define DEFAULT_AXIS4_STEPS_PER_UNIT 57 // Transmission drive: (200 steps per revolution * 1/16 microsteps) / 360 * induction ratio
     #define DEFAULT_AXIS4_MAX_RATE 5000 // °/mn
     #define DEFAULT_AXIS4_ACCELERATION (300.0*60*60) // 100*60*60 °/min^2 = 100 °/sec^2
-    #define DEFAULT_AXIS4_MAX_TRAVEL 180.0 // °
+    #define DEFAULT_AXIS4_MAX_TRAVEL 150.0 // °
   #endif
   #if N_AXIS > 4
-    #define DEFAULT_AXIS5_STEPS_PER_UNIT 450
-    #define DEFAULT_AXIS5_MAX_RATE 5000 // °/mn
-    #define DEFAULT_AXIS5_ACCELERATION (300.0*60*60)
+    #define DEFAULT_AXIS5_STEPS_PER_UNIT 28.5
+    #define DEFAULT_AXIS5_MAX_RATE 4000 // °/mn
+    #define DEFAULT_AXIS5_ACCELERATION (250.0*60*60)
     #define DEFAULT_AXIS5_MAX_TRAVEL 3600 // °
   #endif
   #if N_AXIS > 5
@@ -503,7 +503,7 @@
   #define DEFAULT_STEP_PULSE_MICROSECONDS 5 //CL57T min requirement 2.5us, cn5x setting requires > 3us
   #define DEFAULT_STEPPING_INVERT_MASK 0
   #define DEFAULT_DIRECTION_INVERT_MASK 31 // 00011111 Y Y Y Y Y
-  #define DEFAULT_STEPPER_IDLE_LOCK_TIME 50 // msec (0-254, 255 keeps steppers enabled)
+  #define DEFAULT_STEPPER_IDLE_LOCK_TIME 255 // msec (0-254, 255 keeps steppers enabled)
   #define DEFAULT_STATUS_REPORT_MASK 1 // MPos enabled
   #define DEFAULT_JUNCTION_DEVIATION 0.02 // mm
   #define DEFAULT_ARC_TOLERANCE 0.002 // mm
@@ -516,10 +516,10 @@
   #define DEFAULT_LASER_MODE 1 // true
   #define DEFAULT_HOMING_ENABLE 1  // true
   #define DEFAULT_HOMING_DIR_MASK 0 // move positive dir
-  #define DEFAULT_HOMING_FEED_RATE 500.0 // mm/min
-  #define DEFAULT_HOMING_SEEK_RATE 1000.0 // mm/min
+  #define DEFAULT_HOMING_FEED_RATE 800.0 // mm/min
+  #define DEFAULT_HOMING_SEEK_RATE 1500.0 // mm/min
   #define DEFAULT_HOMING_DEBOUNCE_DELAY 250 // msec (0-65k)
-  #define DEFAULT_HOMING_PULLOFF 2.0 // mm
+  #define DEFAULT_HOMING_PULLOFF 1.0 // mm
 #endif
 
 #endif
