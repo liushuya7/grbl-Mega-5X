@@ -487,8 +487,8 @@
     #define DEFAULT_AXIS4_MAX_TRAVEL 150.0 // °
   #endif
   #if N_AXIS > 4
-    #define DEFAULT_AXIS5_STEPS_PER_UNIT 28.5
-    #define DEFAULT_AXIS5_MAX_RATE 4000 // °/mn
+    #define DEFAULT_AXIS5_STEPS_PER_UNIT 28.46
+    #define DEFAULT_AXIS5_MAX_RATE 3700 // °/mn
     #define DEFAULT_AXIS5_ACCELERATION (250.0*60*60)
     #define DEFAULT_AXIS5_MAX_TRAVEL 3600 // °
   #endif
