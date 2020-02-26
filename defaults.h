@@ -487,10 +487,10 @@
     #define DEFAULT_AXIS4_MAX_TRAVEL 150.0 // °
   #endif
   #if N_AXIS > 4
-    #define DEFAULT_AXIS5_STEPS_PER_UNIT 28.46
-    #define DEFAULT_AXIS5_MAX_RATE 3700 // °/mn
-    #define DEFAULT_AXIS5_ACCELERATION (250.0*60*60)
-    #define DEFAULT_AXIS5_MAX_TRAVEL 3600 // °
+    #define DEFAULT_AXIS5_STEPS_PER_UNIT 8.9
+    #define DEFAULT_AXIS5_MAX_RATE 5000 // °/mn
+    #define DEFAULT_AXIS5_ACCELERATION (750.0*60*60)
+    #define DEFAULT_AXIS5_MAX_TRAVEL 10000 // °
   #endif
   #if N_AXIS > 5
     #define DEFAULT_AXIS6_STEPS_PER_UNIT 8.888889 // Direct drive: (200 steps per revolution * 1/16 microsteps) / 360 = 8.888888889
