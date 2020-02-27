@@ -481,7 +481,7 @@
   #define DEFAULT_AXIS2_MAX_TRAVEL 280.0 // mm
   #define DEFAULT_AXIS3_MAX_TRAVEL 65.0 // mm
   #if N_AXIS > 3
-    #define DEFAULT_AXIS4_STEPS_PER_UNIT 57.7 // Transmission drive: (200 steps per revolution * 1/16 microsteps) / 360 * induction ratio
+    #define DEFAULT_AXIS4_STEPS_PER_UNIT 57.48 // Transmission drive: (200 steps per revolution * 1/16 microsteps) / 360 * induction ratio
     #define DEFAULT_AXIS4_MAX_RATE 5000 // °/mn
     #define DEFAULT_AXIS4_ACCELERATION (300.0*60*60) // 100*60*60 °/min^2 = 100 °/sec^2
     #define DEFAULT_AXIS4_MAX_TRAVEL 150.0 // °
@@ -502,7 +502,7 @@
   #define DEFAULT_SPINDLE_RPM_MIN 0 // rpm
   #define DEFAULT_STEP_PULSE_MICROSECONDS 5 //CL57T min requirement 2.5us, cn5x setting requires > 3us
   #define DEFAULT_STEPPING_INVERT_MASK 0
-  #define DEFAULT_DIRECTION_INVERT_MASK 16 // 00000000 N N N N Y
+  #define DEFAULT_DIRECTION_INVERT_MASK 0 // 00000000 N N N N N
   #define DEFAULT_STEPPER_IDLE_LOCK_TIME 255 // msec (0-254, 255 keeps steppers enabled)
   #define DEFAULT_STATUS_REPORT_MASK 1 // MPos enabled
   #define DEFAULT_JUNCTION_DEVIATION 0.02 // mm
