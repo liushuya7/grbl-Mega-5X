@@ -86,6 +86,13 @@
   #error "N_AXIS must be <= 6. N_AXIS > 6 is not implemented."
 #endif
 
+// Chose the spindle pin output :
+// SPINDLE_PWM_ON_D8 => 0-12v 16 bits PWM on RAMPS D8
+// SPINDLE_PWM_ON_D6 => 0-5v 8bits PWM on RAMPS Servo 2 signal (Mega 2560 D6)
+// Uncomment the line which correspond to your hardware
+#define SPINDLE_PWM_ON_D8
+// #define SPINDLE_PWM_ON_D6
+
 // Renaming axis doesn't change their number. By default, the status report give axis values in
 // the order of their number. Some graphical interface are not able to affect axis values reported
 // by Grbl to the correct axis name.
@@ -178,8 +185,10 @@
     #define HOMING_CYCLE_2 ((1<<AXIS_1)|(1<<AXIS_2)) // Home X, Y axis
   #elif N_AXIS == 5 // 5 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
-    #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))// Home X, Y axis
-    #define HOMING_CYCLE_2 (1<<AXIS_4) // Home 4th axis (A)
+    #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))     // OPTIONAL: uncomment to move X,Y at the same time.
+    //#define HOMING_CYCLE_1 (1<<AXIS_1) // Home X axis  // OPTIONAL: uncomment to move only X at a time.
+    //#define HOMING_CYCLE_2 (1<<AXIS_2) // Home Y axis  // OPTIONAL: uncomment to move only Y at a time.
+    //#define HOMING_CYCLE_3 (1<<AXIS_4) // Home 4th axis (A)
     //#define HOMING_CYCLE_4 (1<<AXIS_5) // Home 5th axis (B)
   #elif N_AXIS == 6 // 6 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
@@ -277,7 +286,7 @@
 // NOTE: The top option will mask and invert all control pins. The bottom option is an example of
 // inverting only two control pins, the safety door and reset. See cpu_map.h for other bit definitions.
 // #define INVERT_CONTROL_PIN_MASK CONTROL_MASK // Default disabled. Uncomment to disable.
-// #define INVERT_CONTROL_PIN_MASK ((1<<CONTROL_SAFETY_DOOR_BIT)|(CONTROL_RESET_BIT)) // Default disabled.
+// #define INVERT_CONTROL_PIN_MASK ((1<<CONTROL_SAFETY_DOOR_BIT)|(1<<CONTROL_RESET_BIT)) // Default disabled.
 
 // Inverts select limit pin states based on the following mask. This effects all limit pin functions,
 // such as hard limits and homing. However, this is different from overall invert limits setting.
@@ -289,7 +298,8 @@
 #if defined DEFAULTS_RAMPS_BOARD | defined DEFAULTS_GRBLDUINO_BOARD
   // Only enable the following line if you have - (min) limit switches attached
   //#define INVERT_MIN_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3))
-  // Only enable the following line if you have + (max) limit switches attached
+  // Enable the following line to inverse logical behaviour (Normaly Open / Normaly Closed)
+  // of some max limit switches attached.
   //#define INVERT_MAX_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3))
 #endif
 
